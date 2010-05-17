@@ -8,7 +8,7 @@ namespace AlgoritmoGenetico
 {
     public static class Program
     {
-        /// <summary>
+        /// <summary> 
         /*Descrição do algoritmo:
          * 
          * 
