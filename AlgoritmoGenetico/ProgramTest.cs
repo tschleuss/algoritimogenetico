@@ -24,6 +24,13 @@ namespace AlgoritmoGenetico
 
             Console.WriteLine("Circuitos gerados randomicamente:");
             Console.WriteLine(p.ToString());
+
+            Console.WriteLine("Tamanho dos percursos:");
+            int i = 1;
+            foreach(Cromossomo c in p.Circuitos){
+                Console.WriteLine(String.Format("{0} - {1}", i, c.ComprimentoCircuito(m)));
+                i++;
+            }
         }
     }
 }

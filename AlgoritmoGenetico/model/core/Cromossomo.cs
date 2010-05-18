@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AlgoritmoGenetico.model.core;
 
 namespace AlgoritmoGenetico.model
 {
@@ -10,6 +11,9 @@ namespace AlgoritmoGenetico.model
     /// </summary>
     public class Cromossomo
     {
+
+        private int comprimentoCircuito;
+
         private IList<int> circuito;
 
         public IList<int> Circuito
@@ -29,6 +33,7 @@ namespace AlgoritmoGenetico.model
         {
             this.circuito = new List<int>();
             this.Tamanho = tamanho;
+            this.comprimentoCircuito = 0;
         }
 
         /// <summary>
@@ -67,6 +72,37 @@ namespace AlgoritmoGenetico.model
         public int BuscarNodo(int index)
         {
             return this.circuito[index];
+        }
+
+        /// <summary>
+        /// Cálcula o comprimento total do percursso
+        /// </summary>
+        /// <returns>Comprimento total</returns>
+        public int ComprimentoCircuito(MatrizDistancias md)
+        {
+            if(this.comprimentoCircuito == 0){
+
+                int destino = 0;
+                int origem = 0;
+
+                foreach (int localidade in this.circuito)
+                {
+                    origem = destino;
+
+                    if (origem != 0)
+                    {
+                        destino = localidade;
+                        this.comprimentoCircuito += md.BuscarDistancia(origem, destino);
+                    }
+                    else
+                    {
+                        destino = localidade;
+                    }
+
+                }
+            }
+
+            return this.comprimentoCircuito;
         }
 
         /// <summary>
