@@ -12,6 +12,8 @@ namespace AlgoritmoGenetico.model.engine
         //define o tamanho da população
         private int numeroCircuitos = 20;
 
+        private Random rnd;
+
         private IList<Cromossomo> circuitos;
 
         public IList<Cromossomo> Circuitos
@@ -22,6 +24,7 @@ namespace AlgoritmoGenetico.model.engine
         public Populacao()
         {
             this.circuitos = new List<Cromossomo>();
+            rnd = new Random();
         }
 
         /// <summary>
@@ -42,7 +45,7 @@ namespace AlgoritmoGenetico.model.engine
 
                 novoCromossomo = this.GerarCromossomo(qtdLocalidades, md.PrimeiraLocalidade(), md.UltimaLocalidade());
 
-                Thread.Sleep(20);
+                //Thread.Sleep(20);
 
                 //gera um novo circuito até achar um que ainda não esteja na população
                 while (this.CromossomoDuplicado(novoCromossomo))
@@ -69,14 +72,13 @@ namespace AlgoritmoGenetico.model.engine
             //deve incluir a ultima localidade no circuito
             ultimaLocalidade++;
 
-            Random rnd = new Random();
             Cromossomo c = new Cromossomo(numerNodos);
             int localidadeSorteada = 0;
 
             for (int i = 0; i < numerNodos; i++)
             {
                 //sorteia uma localidade que esteja entre a primeira e a última definidas na matriz de distancias
-                localidadeSorteada = rnd.Next(primeiraLocalidade, ultimaLocalidade);
+                localidadeSorteada = this.rnd.Next(primeiraLocalidade, ultimaLocalidade);
 
                 //não pode repitir localidade no percurso
                 while(c.ExisteLocalidade(localidadeSorteada))
