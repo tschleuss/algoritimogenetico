@@ -84,6 +84,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\IA6-AlgoritmosGenéticos.ppt" />
     <None Include="resources\matrizDistancias.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
