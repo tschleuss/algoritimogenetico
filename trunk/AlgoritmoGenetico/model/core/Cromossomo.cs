@@ -14,8 +14,9 @@ namespace AlgoritmoGenetico.model
 
         private int comprimentoCircuito;
 
-        private IList<int> circuito;
+        public int AptidaoBruta {get;set;}
 
+        private IList<int> circuito;
         public IList<int> Circuito
         {
             get { return circuito; }
@@ -34,6 +35,7 @@ namespace AlgoritmoGenetico.model
             this.circuito = new List<int>();
             this.Tamanho = tamanho;
             this.comprimentoCircuito = 0;
+            this.AptidaoBruta = 0;
         }
 
         /// <summary>
@@ -75,10 +77,10 @@ namespace AlgoritmoGenetico.model
         }
 
         /// <summary>
-        /// Cálcula o comprimento total do percursso
+        /// Cálcula o comprimento total do percurso
         /// </summary>
         /// <returns>Comprimento total</returns>
-        public int ComprimentoCircuito(MatrizDistancias md)
+        public int CalcularComprimentoCircuito(MatrizDistancias md)
         {
             if(this.comprimentoCircuito == 0){
 

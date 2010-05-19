@@ -14,43 +14,48 @@ namespace AlgoritmoGenetico.model.engine
 
         private Random rnd;
 
-        private IList<Cromossomo> circuitos;
+        private IList<Geracao> listaGeracoes;
+        public Geracao GeracaoAtual { get; set; }
 
-        public IList<Cromossomo> Circuitos
-        {
-            get { return circuitos; }
-        }
+        private int qtdLocalidades;
+        private int primeiraLocalidade;
+        private int ultimaLocalidade;
 
-        public Populacao()
+        public Populacao(MatrizDistancias md)
         {
-            this.circuitos = new List<Cromossomo>();
-            rnd = new Random();
+            this.listaGeracoes = new List<Geracao>();
+            this.rnd = new Random();
+
+            this.qtdLocalidades = md.QuantidadeLocalidades();
+            this.primeiraLocalidade = md.PrimeiraLocalidade();
+
+            //deve incluir a ultima localidade no circuito
+            this.ultimaLocalidade = md.UltimaLocalidade()+1;
         }
 
         /// <summary>
         /// Cria os circuitos randomicamente
         /// </summary>
         /// <param name="md">Informações das localidades para construção do circuito</param>
-        public void GerarPopulacao(MatrizDistancias md)
+        public void GerarPopulacao()
         {
-            int qtdLocalidades = md.QuantidadeLocalidades();
+            Geracao g = new Geracao();
+            g.ID = this.listaGeracoes.Count + 1;
+            GeracaoAtual = g;
 
             Cromossomo novoCromossomo = null;
-
             int tentativas = 0;
 
             for (int i = 1; i <= numeroCircuitos; i++)
             {
                 tentativas = 0;
 
-                novoCromossomo = this.GerarCromossomo(qtdLocalidades, md.PrimeiraLocalidade(), md.UltimaLocalidade());
-
-                //Thread.Sleep(20);
+                novoCromossomo = this.GerarCromossomo();
 
                 //gera um novo circuito até achar um que ainda não esteja na população
                 while (this.CromossomoDuplicado(novoCromossomo))
                 {
-                   novoCromossomo = this.GerarCromossomo(qtdLocalidades, md.PrimeiraLocalidade(), md.UltimaLocalidade());
+                    novoCromossomo = this.GerarCromossomo();
                    tentativas++;
 
                    if (tentativas == 10000)
@@ -60,30 +65,28 @@ namespace AlgoritmoGenetico.model.engine
                 }
 
                //Console.WriteLine("ITEM {0} - Tentativas para gerar {1}", this.circuitos.Count + 1, tentativas);
-               this.circuitos.Add(novoCromossomo);
+               g.AdicionarIndividuo(novoCromossomo);
             }
         }
 
         /// <summary>
         /// Gera um circuito aleatoriamente
         /// </summary>
-        private Cromossomo GerarCromossomo(int numerNodos, int primeiraLocalidade, int ultimaLocalidade)
+        private Cromossomo GerarCromossomo()
         {
-            //deve incluir a ultima localidade no circuito
-            ultimaLocalidade++;
 
-            Cromossomo c = new Cromossomo(numerNodos);
+            Cromossomo c = new Cromossomo(this.qtdLocalidades);
             int localidadeSorteada = 0;
 
-            for (int i = 0; i < numerNodos; i++)
+            for (int i = 0; i < this.qtdLocalidades; i++)
             {
                 //sorteia uma localidade que esteja entre a primeira e a última definidas na matriz de distancias
-                localidadeSorteada = this.rnd.Next(primeiraLocalidade, ultimaLocalidade);
+                localidadeSorteada = this.rnd.Next(this.primeiraLocalidade, this.ultimaLocalidade);
 
                 //não pode repitir localidade no percurso
                 while(c.ExisteLocalidade(localidadeSorteada))
                 {
-                    localidadeSorteada = rnd.Next(primeiraLocalidade, ultimaLocalidade);
+                    localidadeSorteada = rnd.Next(this.primeiraLocalidade, this.ultimaLocalidade);
                 }
 
                c.AdicionarNodo(localidadeSorteada);
@@ -95,13 +98,15 @@ namespace AlgoritmoGenetico.model.engine
         /// <summary>
         /// Verifica se o circuito já existe na população
         /// </summary>
-        /// <param name="novoCromossomo">Circuito usado no teste</param>
+        /// <param name="novoCromossomo">Circuito que se deseja incluir na população</param>
         /// <returns>Indica se já existe ou nao</returns>
         private bool CromossomoDuplicado(Cromossomo novoCromossomo)
         {
             bool duplicado = false;
 
-            foreach (Cromossomo c in this.circuitos)
+            IList<Cromossomo> circuitos = this.GeracaoAtual.Populacao;
+
+            foreach (Cromossomo c in circuitos)
             {
                 if (c.Equals(novoCromossomo))
                 {
@@ -113,11 +118,26 @@ namespace AlgoritmoGenetico.model.engine
             return duplicado;
         }
 
+        /// <summary>
+        /// Ordena a lista de circuitos de acordo com a apitdao bruta
+        /// </summary>
+        public void AtualizarPopulacaoGeracaoAtual()
+        {
+            this.GeracaoAtual.Populacao = (from c in this.GeracaoAtual.Populacao
+                                                 orderby c.AptidaoBruta descending
+                                                 select c).ToList();
+        }
+
+        /// <summary>
+        /// Busca os circuitos da população (geração atual)
+        /// </summary>
         public String ToString()
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (Cromossomo c in this.Circuitos)
+            IList<Cromossomo> circuitos = this.GeracaoAtual.Populacao;
+
+            foreach (Cromossomo c in circuitos)
             {
                 foreach (int localidade in c.Circuito)
                 {

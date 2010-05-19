@@ -13,24 +13,28 @@ namespace AlgoritmoGenetico
 
         public void Testar()
         {
-            MatrizDistancias m = new MatrizDistancias();
-            m.CarregarMatriz();
+            MatrizDistancias md = new MatrizDistancias();
+            md.CarregarMatriz();
 
             Console.WriteLine("Matriz de distancias:");
-            Console.WriteLine(m.ToString());
+            Console.WriteLine(md.ToString());
 
-            Populacao p = new Populacao();
-            p.GerarPopulacao(m);
+            Populacao p = new Populacao(md);
+            p.GerarPopulacao();
 
             Console.WriteLine("Circuitos gerados randomicamente:");
             Console.WriteLine(p.ToString());
 
-            Console.WriteLine("Tamanho dos percursos:");
-            int i = 1;
-            foreach(Cromossomo c in p.Circuitos){
-                Console.WriteLine(String.Format("{0} - {1}", i, c.ComprimentoCircuito(m)));
-                i++;
-            }
+            Aptidao ap = new Aptidao(md);
+            ap.CalcularAptidaoBruta(p.GeracaoAtual.Populacao);
+            ap.CalcularAptidaoPopulacional(p.GeracaoAtual);
+
+            //após calcular a aptidaão bruta, atualiza a lista atual, ordenando pela aptidão bruta calculada
+            p.AtualizarPopulacaoGeracaoAtual();
+
+            Console.WriteLine("Circuitos ordenados por aptidao:");
+            Console.WriteLine(p.ToString());
+
         }
     }
 }

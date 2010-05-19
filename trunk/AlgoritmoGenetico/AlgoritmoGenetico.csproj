@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{82E61FB6-72D2-4D9B-B893-14AB79E6DCBF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\core\Cromossomo.cs" />
+    <Compile Include="model\core\Geracao.cs" />
     <Compile Include="model\core\MatrizDistancias.cs" />
     <Compile Include="model\engine\Aptidao.cs" />
     <Compile Include="model\engine\CrossOver.cs" />
