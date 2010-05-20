@@ -55,6 +55,7 @@
     <Compile Include="model\engine\CrossOver.cs" />
     <Compile Include="model\engine\MutacaoGenetica.cs" />
     <Compile Include="model\engine\Populacao.cs" />
+    <Compile Include="model\engine\ProbabilidadeSelecao.cs" />
     <Compile Include="ProgramTest.cs" />
     <Compile Include="view\TelaPrincipal.cs">
       <SubType>Form</SubType>
@@ -67,6 +68,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\TelaPrincipal.resx">
+      <DependentUpon>TelaPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">

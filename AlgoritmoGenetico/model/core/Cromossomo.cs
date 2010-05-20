@@ -14,7 +14,10 @@ namespace AlgoritmoGenetico.model
 
         private int comprimentoCircuito;
 
-        public int AptidaoBruta {get;set;}
+        public double AptidaoBruta {get;set;}
+        public double ProbabSelecao { get; set; }
+        public double IntervalorInicio { get; set; }
+        public double IntervalorFim { get; set; }
 
         private IList<int> circuito;
         public IList<int> Circuito
@@ -36,6 +39,9 @@ namespace AlgoritmoGenetico.model
             this.Tamanho = tamanho;
             this.comprimentoCircuito = 0;
             this.AptidaoBruta = 0;
+            this.ProbabSelecao = 0;
+            this.IntervalorInicio = 0;
+            this.IntervalorFim = 0;
         }
 
         /// <summary>

@@ -35,6 +35,8 @@ namespace AlgoritmoGenetico
             Console.WriteLine("Circuitos ordenados por aptidao:");
             Console.WriteLine(p.ToString());
 
+            new ProbabilidadeSelecao().CalcularProbabilidade(p.GeracaoAtual);
+
         }
     }
 }

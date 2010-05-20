@@ -135,8 +135,9 @@ namespace AlgoritmoGenetico.Properties {
         ///4--
         ///5--
         ///6--
-        ///7-31
+        ///7--
         ///8-31
+        ///9-31
         ///
         ///8:
         ///1--
