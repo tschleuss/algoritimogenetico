@@ -74,8 +74,7 @@ namespace AlgoritmoGenetico.model.engine
         /// </summary>
         private Cromossomo GerarCromossomo()
         {
-
-            Cromossomo c = new Cromossomo(this.qtdLocalidades);
+            Cromossomo c = new Cromossomo(this.qtdLocalidades, this.GeracaoAtual.Populacao.Count+1);
             int localidadeSorteada = 0;
 
             for (int i = 0; i < this.qtdLocalidades; i++)

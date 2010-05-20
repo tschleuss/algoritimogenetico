@@ -33,12 +33,6 @@ namespace AlgoritmoGenetico
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new TelaPrincipal());
-            
-
-            ProgramTest p = new ProgramTest();
-            p.Testar();
-
-            Console.ReadLine();
         }
     }
 }

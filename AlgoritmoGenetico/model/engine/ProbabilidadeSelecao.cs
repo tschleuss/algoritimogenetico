@@ -27,19 +27,23 @@ namespace AlgoritmoGenetico.model.engine
             {
                 if (c.AptidaoBruta != 0)
                 {
-                    c.ProbabSelecao = c.AptidaoBruta / aptidaoPopulacional;
-                    c.ProbabSelecao = double.Parse(c.ProbabSelecao.ToString("0.0000"));
+                    c.ProbabSelecao = this.ParseFormat(c.AptidaoBruta / aptidaoPopulacional);
                 }
 
 
-                c.IntervalorInicio = this.intervaloAtual;
-                c.IntervalorFim = c.IntervalorInicio + c.ProbabSelecao;
+                c.IntervaloInicio = this.ParseFormat(this.intervaloAtual);
+                c.IntervaloFim = this.ParseFormat(c.IntervaloInicio + c.ProbabSelecao);
 
-                this.intervaloAtual = c.IntervalorFim;
+                this.intervaloAtual = c.IntervaloFim;
 
-                Console.WriteLine(String.Format("{0} - {1} ({2} - {3})", i, c.ProbabSelecao, c.IntervalorInicio, c.IntervalorFim));
+                Console.WriteLine(String.Format("{0} - {1} ({2} - {3})", i, c.ProbabSelecao, c.IntervaloInicio, c.IntervaloFim));
                 i++;
             }
+        }
+
+        private double ParseFormat(double valor)
+        {
+            return double.Parse(valor.ToString("0.0000"));
         }
 
     }

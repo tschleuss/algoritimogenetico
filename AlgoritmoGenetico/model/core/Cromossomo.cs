@@ -16,8 +16,9 @@ namespace AlgoritmoGenetico.model
 
         public double AptidaoBruta {get;set;}
         public double ProbabSelecao { get; set; }
-        public double IntervalorInicio { get; set; }
-        public double IntervalorFim { get; set; }
+        public double IntervaloInicio { get; set; }
+        public double IntervaloFim { get; set; }
+        public int ID { get; set; }
 
         private IList<int> circuito;
         public IList<int> Circuito
@@ -32,16 +33,46 @@ namespace AlgoritmoGenetico.model
             set;
         }
 
+        public String CircuitoString
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+
+                for (int i = 0; i < circuito.Count; i++)
+                {
+                    sb.Append(circuito[i]);
+
+
+                    if (i < circuito.Count - 1)
+                    {
+                        sb.Append("-");
+                    }
+                }
+
+                return sb.ToString();
+            }
+        }
+
+        public String IntervaloTotal
+        {
+            get
+            {
+                return String.Format("[{0} - {1}]", IntervaloInicio, IntervaloFim);
+            }
+        }
+
         /// <param name="tamanho">Quantidade máxima de localidades</param>
-        public Cromossomo(int tamanho)
+        public Cromossomo(int tamanho, int id)
         {
             this.circuito = new List<int>();
             this.Tamanho = tamanho;
+            this.ID = id;
             this.comprimentoCircuito = 0;
             this.AptidaoBruta = 0;
             this.ProbabSelecao = 0;
-            this.IntervalorInicio = 0;
-            this.IntervalorFim = 0;
+            this.IntervaloInicio = 0;
+            this.IntervaloFim = 0;
         }
 
         /// <summary>
