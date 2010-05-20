@@ -29,11 +29,11 @@ namespace AlgoritmoGenetico
         /// </summary>
         static void Main()
         {
-            /*
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new TelaPrincipal());
-            */
+            
 
             ProgramTest p = new ProgramTest();
             p.Testar();

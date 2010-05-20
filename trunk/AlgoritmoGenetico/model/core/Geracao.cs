@@ -7,9 +7,8 @@ namespace AlgoritmoGenetico.model.core
 {
     public class Geracao
     {
-
         public int ID {get; set;}
-        public int AptidaoPopulacional { get; set; }
+        public double AptidaoPopulacional { get; set; }
         public IList<Cromossomo> Populacao { get; set; }
 
         public Geracao()
