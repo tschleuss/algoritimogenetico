@@ -1,4 +1,5 @@
-﻿namespace AlgoritmoGenetico
+﻿using System.Windows.Forms;
+namespace AlgoritmoGenetico
 {
     partial class TelaPrincipal
     {
@@ -29,6 +30,8 @@
         private void InitializeComponent()
         {
             this.toolbar = new System.Windows.Forms.ToolStrip();
+            this.lblTamPopulacao = new System.Windows.Forms.ToolStripLabel();
+            this.txtTamPopulacao = new System.Windows.Forms.ToolStripTextBox();
             this.barStatus = new System.Windows.Forms.StatusStrip();
             this.barStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTamanhoPopulacao = new System.Windows.Forms.ToolStripLabel();
@@ -40,17 +43,34 @@
             this.colunaAptidao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaProbab = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaIntervalo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolbar.SuspendLayout();
             this.panelDataGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // toolbar
             // 
+            this.toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblTamPopulacao,
+            this.txtTamPopulacao});
             this.toolbar.Location = new System.Drawing.Point(0, 0);
             this.toolbar.Name = "toolbar";
             this.toolbar.Size = new System.Drawing.Size(614, 25);
             this.toolbar.TabIndex = 1;
             this.toolbar.Text = "toolStrip1";
+            // 
+            // lblTamPopulacao
+            // 
+            this.lblTamPopulacao.Name = "lblTamPopulacao";
+            this.lblTamPopulacao.Size = new System.Drawing.Size(118, 22);
+            this.lblTamPopulacao.Text = "Tamanho da população";
+            // 
+            // txtTamPopulacao
+            // 
+            this.txtTamPopulacao.Name = "txtTamPopulacao";
+            this.txtTamPopulacao.Size = new System.Drawing.Size(40, 25);
+            this.txtTamPopulacao.Text = "20";
+            this.txtTamPopulacao.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // barStatus
             // 
@@ -85,6 +105,8 @@
             this.grid.AllowUserToAddRows = false;
             this.grid.AllowUserToDeleteRows = false;
             this.grid.AllowUserToOrderColumns = true;
+            this.grid.AllowUserToResizeColumns = false;
+            this.grid.AllowUserToResizeRows = false;
             this.grid.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -99,49 +121,70 @@
             this.grid.Location = new System.Drawing.Point(0, 0);
             this.grid.Name = "grid";
             this.grid.ReadOnly = true;
+            this.grid.RowHeadersVisible = false;
             this.grid.Size = new System.Drawing.Size(614, 377);
             this.grid.TabIndex = 1;
+            this.grid.AutoGenerateColumns = false;
             // 
             // colunaID
             // 
+            this.colunaID.DataPropertyName = "ID";
             this.colunaID.HeaderText = "Nº";
             this.colunaID.Name = "colunaID";
             this.colunaID.ReadOnly = true;
             this.colunaID.Width = 30;
+            this.colunaID.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colunaID.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             // 
             // colunaCircuito
             // 
+            this.colunaCircuito.DataPropertyName = "CircuitoString";
             this.colunaCircuito.HeaderText = "Circuito";
             this.colunaCircuito.Name = "colunaCircuito";
             this.colunaCircuito.ReadOnly = true;
+            this.colunaCircuito.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colunaCircuito.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
             // colunaTamanho
             // 
+            this.colunaTamanho.DataPropertyName = "Tamanho";
             this.colunaTamanho.HeaderText = "Tamanho";
             this.colunaTamanho.Name = "colunaTamanho";
             this.colunaTamanho.ReadOnly = true;
             this.colunaTamanho.Width = 80;
+            this.colunaTamanho.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colunaTamanho.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
             // colunaAptidao
             // 
+            this.colunaAptidao.DataPropertyName = "AptidaoBruta";
             this.colunaAptidao.HeaderText = "Aptidão";
             this.colunaAptidao.Name = "colunaAptidao";
             this.colunaAptidao.ReadOnly = true;
             this.colunaAptidao.Width = 80;
+            this.colunaAptidao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colunaAptidao.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
             // colunaProbab
             // 
+            this.colunaProbab.DataPropertyName = "ProbabSelecao";
             this.colunaProbab.HeaderText = "Probab. de Seleção";
             this.colunaProbab.Name = "colunaProbab";
             this.colunaProbab.ReadOnly = true;
             this.colunaProbab.Width = 150;
+            this.colunaProbab.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colunaProbab.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
             // colunaIntervalo
             // 
+            this.colunaIntervalo.DataPropertyName = "IntervaloTotal";
             this.colunaIntervalo.HeaderText = "Intervalo";
             this.colunaIntervalo.Name = "colunaIntervalo";
             this.colunaIntervalo.ReadOnly = true;
             this.colunaIntervalo.Width = 120;
+            this.colunaIntervalo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colunaIntervalo.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
             // TelaPrincipal
             // 
@@ -153,6 +196,8 @@
             this.Controls.Add(this.toolbar);
             this.Name = "TelaPrincipal";
             this.Text = "Caixeiro Viajante - Algoritmos Genéticos";
+            this.toolbar.ResumeLayout(false);
+            this.toolbar.PerformLayout();
             this.panelDataGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
@@ -174,6 +219,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colunaProbab;
         private System.Windows.Forms.DataGridViewTextBoxColumn colunaIntervalo;
         private System.Windows.Forms.DataGridView grid;
+        private System.Windows.Forms.ToolStripLabel lblTamPopulacao;
+        private System.Windows.Forms.ToolStripTextBox txtTamPopulacao;
     }
 }
 
