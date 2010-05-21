@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using AlgoritmoGenetico.model.core;
 using AlgoritmoGenetico.model.engine;
+using AlgoritmoGenetico.view;
 
 namespace AlgoritmoGenetico
 {
@@ -26,8 +27,27 @@ namespace AlgoritmoGenetico
             this.CalcularAptidao();
             this.CalcularProbabilidade();
 
-            this.grid.DataSource = this.p.GeracaoAtual.Populacao;
+            this.AdicionarTabGeracao();
         }
+
+        public void AdicionarTabGeracao()
+        {
+
+            int inicial = (this.tabControlPrincipal.TabCount * 5) + 1;
+            int final = inicial + 4;
+
+            TabPage page = new TabPage();
+            page.Text = String.Format("Gerações [{0} - {1}]", inicial, final);
+            
+            TabGeracao tabGeracao = new TabGeracao();
+            tabGeracao.Dock = DockStyle.Fill;
+            page.Controls.Add(tabGeracao);
+
+            tabGeracao.PopularGridGeracaoAtual(this.p.GeracaoAtual.Populacao);
+
+            this.tabControlPrincipal.Controls.Add(page);
+        }
+
 
         private void CarregarMatriz()
         {
