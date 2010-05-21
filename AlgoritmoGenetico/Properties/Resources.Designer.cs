@@ -60,6 +60,20 @@ namespace AlgoritmoGenetico.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap avancar4 {
+            get {
+                object obj = ResourceManager.GetObject("avancar4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap avancarGrupo {
+            get {
+                object obj = ResourceManager.GetObject("avancarGrupo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to 1:
         ///1--
@@ -164,6 +178,13 @@ namespace AlgoritmoGenetico.Properties {
         internal static string matrizDistancias {
             get {
                 return ResourceManager.GetString("matrizDistancias", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap mutacoes {
+            get {
+                object obj = ResourceManager.GetObject("mutacoes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
