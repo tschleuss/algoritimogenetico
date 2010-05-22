@@ -14,7 +14,7 @@ namespace AlgoritmoGenetico.model.engine
 
         private Random rnd;
 
-        private IList<Geracao> listaGeracoes;
+        public IList<Geracao> ListaGeracoes;
         public Geracao GeracaoAtual { get; set; }
 
         private int qtdLocalidades;
@@ -23,7 +23,7 @@ namespace AlgoritmoGenetico.model.engine
 
         public Populacao(MatrizDistancias md)
         {
-            this.listaGeracoes = new List<Geracao>();
+            this.ListaGeracoes = new List<Geracao>();
             this.rnd = new Random();
 
             this.qtdLocalidades = md.QuantidadeLocalidades();
@@ -39,7 +39,7 @@ namespace AlgoritmoGenetico.model.engine
         public void GerarPrimeiraGeracao()
         {
             Geracao g = new Geracao();
-            g.ID = this.listaGeracoes.Count + 1;
+            g.ID = this.ListaGeracoes.Count + 1;
             GeracaoAtual = g;
 
             Cromossomo novoCromossomo = null;
@@ -67,7 +67,7 @@ namespace AlgoritmoGenetico.model.engine
                g.AdicionarIndividuo(novoCromossomo);
             }
 
-            this.listaGeracoes.Add(g);
+            this.ListaGeracoes.Add(g);
         }
 
         /// <summary>
@@ -130,8 +130,8 @@ namespace AlgoritmoGenetico.model.engine
 
         public void AdicionarGeracao(Geracao g)
         {
-            g.ID = this.listaGeracoes.Count + 1;
-            this.listaGeracoes.Add(g);
+            g.ID = this.ListaGeracoes.Count + 1;
+            this.ListaGeracoes.Add(g);
             this.GeracaoAtual = g;
         }
 

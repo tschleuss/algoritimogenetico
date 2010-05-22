@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ChartControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -65,6 +66,12 @@
     <Compile Include="view\PanelGeracao.Designer.cs">
       <DependentUpon>PanelGeracao.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\RelatorioAptidao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\RelatorioAptidao.Designer.cs">
+      <DependentUpon>RelatorioAptidao.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\SubTabGeracao.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -89,6 +96,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="view\PanelGeracao.resx">
       <DependentUpon>PanelGeracao.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\RelatorioAptidao.resx">
+      <DependentUpon>RelatorioAptidao.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="view\TabGeracao.resx">
@@ -120,9 +131,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="resources\AlgorGenet.exe" />
+    <Content Include="resources\aptidao.ico" />
+    <Content Include="resources\aptidao.png" />
     <Content Include="resources\avancar4.png" />
     <Content Include="resources\avancarGrupo.png" />
     <None Include="resources\matriz.png" />
+    <Content Include="resources\ChartControl.dll" />
     <Content Include="resources\mutacoes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -60,6 +60,13 @@ namespace AlgoritmoGenetico.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap aptidao {
+            get {
+                object obj = ResourceManager.GetObject("aptidao", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap avancar4 {
             get {
                 object obj = ResourceManager.GetObject("avancar4", resourceCulture);
