@@ -34,10 +34,9 @@ namespace AlgoritmoGenetico.model.engine
         }
 
         /// <summary>
-        /// Cria os circuitos randomicamente
+        /// Cria os circuitos da primeira geração randomicamente
         /// </summary>
-        /// <param name="md">Informações das localidades para construção do circuito</param>
-        public void GerarPopulacao()
+        public void GerarPrimeiraGeracao()
         {
             Geracao g = new Geracao();
             g.ID = this.listaGeracoes.Count + 1;
@@ -67,6 +66,8 @@ namespace AlgoritmoGenetico.model.engine
                //Console.WriteLine("ITEM {0} - Tentativas para gerar {1}", this.circuitos.Count + 1, tentativas);
                g.AdicionarIndividuo(novoCromossomo);
             }
+
+            this.listaGeracoes.Add(g);
         }
 
         /// <summary>
@@ -99,7 +100,7 @@ namespace AlgoritmoGenetico.model.engine
         /// </summary>
         /// <param name="novoCromossomo">Circuito que se deseja incluir na população</param>
         /// <returns>Indica se já existe ou nao</returns>
-        private bool CromossomoDuplicado(Cromossomo novoCromossomo)
+        public bool CromossomoDuplicado(Cromossomo novoCromossomo)
         {
             bool duplicado = false;
 
@@ -125,6 +126,13 @@ namespace AlgoritmoGenetico.model.engine
             this.GeracaoAtual.Populacao = (from c in this.GeracaoAtual.Populacao
                                                  orderby c.AptidaoBruta descending
                                                  select c).ToList();
+        }
+
+        public void AdicionarGeracao(Geracao g)
+        {
+            g.ID = this.listaGeracoes.Count + 1;
+            this.listaGeracoes.Add(g);
+            this.GeracaoAtual = g;
         }
 
         /// <summary>

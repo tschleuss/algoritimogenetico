@@ -16,6 +16,10 @@ namespace AlgoritmoGenetico.model.engine
             this.intervaloAtual = 0;
         }
 
+        /// <summary>
+        /// Realiza o cálculo das prbabilidades de seleção dos circuitos de uma geração e seus intervalos de início e fim
+        /// </summary>
+        /// <param name="g">Geração</param>
         public void CalcularProbabilidade(Geracao g)
         {
             double aptidaoPopulacional = g.AptidaoPopulacional;
@@ -30,7 +34,6 @@ namespace AlgoritmoGenetico.model.engine
                     c.ProbabSelecao = this.ParseFormat(c.AptidaoBruta / aptidaoPopulacional);
                 }
 
-
                 c.IntervaloInicio = this.ParseFormat(this.intervaloAtual);
                 c.IntervaloFim = this.ParseFormat(c.IntervaloInicio + c.ProbabSelecao);
 
@@ -41,6 +44,11 @@ namespace AlgoritmoGenetico.model.engine
             }
         }
 
+        /// <summary>
+        /// Truna um número decimal para 4 casas após a vírgula
+        /// </summary>
+        /// <param name="valor">Número decimal</param>
+        /// <returns>Número decimal com 4 casas após a vírgula</returns>
         private double ParseFormat(double valor)
         {
             return double.Parse(valor.ToString("0.0000"));

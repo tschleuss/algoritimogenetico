@@ -29,6 +29,8 @@ namespace AlgoritmoGenetico.view
         /// </summary>
         private void InitializeComponent()
         {
+            this.lblAptidaoPopulacional = new System.Windows.Forms.Label();
+            this.LblAptidaoPopulacionalValor = new System.Windows.Forms.Label();
             this.panelContainer = new System.Windows.Forms.Panel();
             this.Grid = new System.Windows.Forms.DataGridView();
             this.colunaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,9 +46,9 @@ namespace AlgoritmoGenetico.view
             // panel1
             // 
             this.panelContainer.Controls.Add(this.Grid);
-            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            //this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 0);
-            this.panelContainer.Size = new System.Drawing.Size(568, 402);
+            this.panelContainer.Size = new System.Drawing.Size(575, 463);
             this.panelContainer.TabIndex = 0;
             // 
             // grid
@@ -56,7 +58,6 @@ namespace AlgoritmoGenetico.view
             this.Grid.AllowUserToOrderColumns = true;
             this.Grid.AllowUserToResizeColumns = false;
             this.Grid.AllowUserToResizeRows = false;
-            this.Grid.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colunaID,
@@ -66,12 +67,10 @@ namespace AlgoritmoGenetico.view
             this.colunaProbab,
             this.colunaIntervalo});
             this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Grid.GridColor = System.Drawing.SystemColors.Control;
             this.Grid.Location = new System.Drawing.Point(0, 0);
             this.Grid.Name = "grid";
             this.Grid.ReadOnly = true;
             this.Grid.RowHeadersVisible = false;
-            this.Grid.Size = new System.Drawing.Size(568, 402);
             this.Grid.TabIndex = 2;
             this.Grid.AutoGenerateColumns = false;
             this.Grid.BorderStyle = BorderStyle.FixedSingle;
@@ -136,10 +135,31 @@ namespace AlgoritmoGenetico.view
             this.colunaIntervalo.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.colunaIntervalo.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
+            // lblAptidaoPopulacional
+            // 
+            this.lblAptidaoPopulacional.AutoSize = true;
+            this.lblAptidaoPopulacional.Location = new System.Drawing.Point(3, 470);
+            this.lblAptidaoPopulacional.Name = "lblAptidaoPopulacional";
+            this.lblAptidaoPopulacional.Size = new System.Drawing.Size(110, 13);
+            this.lblAptidaoPopulacional.TabIndex = 0;
+            this.lblAptidaoPopulacional.Text = "Aptidão Populacional:";
+            // 
+            // LblAptidaoPopulacionalValor
+            // 
+            this.LblAptidaoPopulacionalValor.AutoSize = true;
+            this.LblAptidaoPopulacionalValor.Location = new System.Drawing.Point(115, 468);
+            this.LblAptidaoPopulacionalValor.Name = "LblAptidaoPopulacionalValor";
+            this.LblAptidaoPopulacionalValor.Size = new System.Drawing.Size(43, 13);
+            this.LblAptidaoPopulacionalValor.TabIndex = 1;
+            this.LblAptidaoPopulacionalValor.Text = "VALOR";
+            this.LblAptidaoPopulacionalValor.Font = new System.Drawing.Font("Arial", 10f, System.Drawing.FontStyle.Bold);
+            // 
             // PanelGeracao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LblAptidaoPopulacionalValor);
+            this.Controls.Add(this.lblAptidaoPopulacional);
             this.Controls.Add(this.panelContainer);
             this.Name = "PanelGeracao";
             this.Size = new System.Drawing.Size(568, 402);
@@ -152,12 +172,14 @@ namespace AlgoritmoGenetico.view
         #endregion
 
         private Panel panelContainer;
-        public DataGridView Grid;
         private DataGridViewTextBoxColumn colunaID;
         private DataGridViewTextBoxColumn colunaCircuito;
         private DataGridViewTextBoxColumn colunaTamanho;
         private DataGridViewTextBoxColumn colunaAptidao;
         private DataGridViewTextBoxColumn colunaProbab;
         private DataGridViewTextBoxColumn colunaIntervalo;
+        private Label lblAptidaoPopulacional;
+        public DataGridView Grid;
+        public Label LblAptidaoPopulacionalValor;
     }
 }

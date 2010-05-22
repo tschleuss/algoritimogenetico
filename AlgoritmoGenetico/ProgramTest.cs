@@ -20,7 +20,7 @@ namespace AlgoritmoGenetico
             Console.WriteLine(md.ToString());
 
             Populacao p = new Populacao(md);
-            p.GerarPopulacao();
+            p.GerarPrimeiraGeracao();
 
             Console.WriteLine("Circuitos gerados randomicamente:");
             Console.WriteLine(p.ToString());

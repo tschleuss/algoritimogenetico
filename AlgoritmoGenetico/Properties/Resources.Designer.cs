@@ -74,6 +74,13 @@ namespace AlgoritmoGenetico.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap matriz {
+            get {
+                object obj = ResourceManager.GetObject("matriz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to 1:
         ///1--
