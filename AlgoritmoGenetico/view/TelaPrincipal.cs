@@ -17,7 +17,6 @@ namespace AlgoritmoGenetico
 {
     public partial class TelaPrincipal : Form
     {
-
         private MatrizDistancias md;
         private Populacao populacao;
         private TabGeracao tabGeracaoAtual;
@@ -121,9 +120,22 @@ namespace AlgoritmoGenetico
                 this.PopularGridGeracalAtual();
             }
            
-            lblRodape.Text = String.Format("Gerações avançadas. Geração atual:{0}", this.populacao.GeracaoAtual.ID);
+            lblRodape.Text = String.Format("Evolução concluída. Geração atual:{0}", this.populacao.GeracaoAtual.ID);
 
             this.tabGeracaoAtual.DesabilitarBotaoAvancar();
+        }
+
+        private void btVisualizarGrafico_Click(object sender, EventArgs e)
+        {
+
+            IList<double> listaAptidao = new List<double>();
+
+            foreach(Geracao g in this.populacao.ListaGeracoes){
+                listaAptidao.Add(g.AptidaoPopulacional);
+            }
+
+            RelatorioAptidao relatorioAptidao = new RelatorioAptidao(listaAptidao);
+            relatorioAptidao.ShowDialog();
         }
     }
 }

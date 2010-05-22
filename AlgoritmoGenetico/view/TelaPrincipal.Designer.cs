@@ -34,12 +34,13 @@ namespace AlgoritmoGenetico
             this.separador1 = new System.Windows.Forms.ToolStripSeparator();
             this.btAvancarGeracoes = new System.Windows.Forms.ToolStripButton();
             this.separador2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btVisualizarGrafico = new System.Windows.Forms.ToolStripButton();
             this.barStatus = new System.Windows.Forms.StatusStrip();
+            this.lblRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.barStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblTamanhoPopulacao = new System.Windows.Forms.ToolStripLabel();
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.lblRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolbar.SuspendLayout();
             this.barStatus.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +51,8 @@ namespace AlgoritmoGenetico
             this.btVisualizarMatriz,
             this.separador1,
             this.btAvancarGeracoes,
-            this.separador2});
+            this.separador2,
+            this.btVisualizarGrafico});
             this.toolbar.Location = new System.Drawing.Point(0, 0);
             this.toolbar.Name = "toolbar";
             this.toolbar.Size = new System.Drawing.Size(579, 25);
@@ -86,6 +88,16 @@ namespace AlgoritmoGenetico
             this.separador2.Name = "separador2";
             this.separador2.Size = new System.Drawing.Size(6, 25);
             // 
+            // btVisualizarGrafico
+            // 
+            this.btVisualizarGrafico.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btVisualizarGrafico.Image = global::AlgoritmoGenetico.Properties.Resources.aptidao;
+            this.btVisualizarGrafico.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btVisualizarGrafico.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btVisualizarGrafico.Name = "btVisualizarGrafico";
+            this.btVisualizarGrafico.Size = new System.Drawing.Size(135, 22);
+            this.btVisualizarGrafico.Click += new System.EventHandler(this.btVisualizarGrafico_Click);
+            // 
             // barStatus
             // 
             this.barStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -95,6 +107,12 @@ namespace AlgoritmoGenetico
             this.barStatus.Size = new System.Drawing.Size(579, 22);
             this.barStatus.SizingGrip = false;
             this.barStatus.TabIndex = 2;
+            // 
+            // lblRodape
+            // 
+            this.lblRodape.Name = "lblRodape";
+            this.lblRodape.Size = new System.Drawing.Size(107, 17);
+            this.lblRodape.Text = "População iniciada";
             // 
             // barStatusLabel
             // 
@@ -126,12 +144,6 @@ namespace AlgoritmoGenetico
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(198, 22);
             this.toolStripButton1.Text = "toolStripButton1";
-            // 
-            // lblRodape
-            // 
-            this.lblRodape.Name = "lblRodape";
-            this.lblRodape.Size = new System.Drawing.Size(107, 17);
-            this.lblRodape.Text = "População iniciada";
             // 
             // TelaPrincipal
             // 
@@ -168,6 +180,7 @@ namespace AlgoritmoGenetico
         private ToolStripButton btVisualizarMatriz;
         private ToolStripSeparator separador2;
         private ToolStripStatusLabel lblRodape;
+        private ToolStripButton btVisualizarGrafico;
     }
 }
 
