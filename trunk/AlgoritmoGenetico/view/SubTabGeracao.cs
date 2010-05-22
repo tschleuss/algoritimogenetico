@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AlgoritmoGenetico.model;
+using AlgoritmoGenetico.model.core;
 
 namespace AlgoritmoGenetico.view
 {
@@ -23,9 +24,10 @@ namespace AlgoritmoGenetico.view
             this.Controls.Add(this.panel);
         }
 
-        public void CarregarDados(IList<Cromossomo> dados)
+        public void CarregarDados(Geracao g)
         {
-            this.panel.Grid.DataSource = dados;
+            this.panel.Grid.DataSource = g.Populacao;
+            this.panel.LblAptidaoPopulacionalValor.Text = g.AptidaoPopulacional.ToString();
         }
     }
 }

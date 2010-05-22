@@ -51,11 +51,13 @@
     <Compile Include="model\core\Cromossomo.cs" />
     <Compile Include="model\core\Geracao.cs" />
     <Compile Include="model\core\MatrizDistancias.cs" />
+    <Compile Include="model\delegates\Delegates.cs" />
     <Compile Include="model\engine\Aptidao.cs" />
     <Compile Include="model\engine\CrossOver.cs" />
     <Compile Include="model\engine\MutacaoGenetica.cs" />
     <Compile Include="model\engine\Populacao.cs" />
     <Compile Include="model\engine\ProbabilidadeSelecao.cs" />
+    <Compile Include="model\engine\Selecao.cs" />
     <Compile Include="ProgramTest.cs" />
     <Compile Include="view\PanelGeracao.cs">
       <SubType>UserControl</SubType>
@@ -120,6 +122,7 @@
     <Content Include="resources\AlgorGenet.exe" />
     <Content Include="resources\avancar4.png" />
     <Content Include="resources\avancarGrupo.png" />
+    <None Include="resources\matriz.png" />
     <Content Include="resources\mutacoes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
