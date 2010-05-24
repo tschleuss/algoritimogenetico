@@ -32,14 +32,14 @@
             this.lblMenorCaminho = new System.Windows.Forms.Label();
             this.lblMenorCaminhoValor = new System.Windows.Forms.Label();
             this.fieldsetInfo = new System.Windows.Forms.GroupBox();
+            this.lblTamanhoValor = new System.Windows.Forms.Label();
+            this.lblTamanho = new System.Windows.Forms.Label();
             this.lblMutacaoValor = new System.Windows.Forms.Label();
             this.lblIDValor = new System.Windows.Forms.Label();
             this.lblGeracaoValor = new System.Windows.Forms.Label();
             this.lblMutacao = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.lblGeracao = new System.Windows.Forms.Label();
-            this.lblTamanho = new System.Windows.Forms.Label();
-            this.lblTamanhoValor = new System.Windows.Forms.Label();
             this.fieldsetInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +79,24 @@
             this.fieldsetInfo.TabIndex = 2;
             this.fieldsetInfo.TabStop = false;
             this.fieldsetInfo.Text = "Outras informações";
+            // 
+            // lblTamanhoValor
+            // 
+            this.lblTamanhoValor.AutoSize = true;
+            this.lblTamanhoValor.Location = new System.Drawing.Point(273, 57);
+            this.lblTamanhoValor.Name = "lblTamanhoValor";
+            this.lblTamanhoValor.Size = new System.Drawing.Size(43, 13);
+            this.lblTamanhoValor.TabIndex = 7;
+            this.lblTamanhoValor.Text = "VALOR";
+            // 
+            // lblTamanho
+            // 
+            this.lblTamanho.AutoSize = true;
+            this.lblTamanho.Location = new System.Drawing.Point(166, 57);
+            this.lblTamanho.Name = "lblTamanho";
+            this.lblTamanho.Size = new System.Drawing.Size(107, 13);
+            this.lblTamanho.TabIndex = 6;
+            this.lblTamanho.Text = "Tamanho do circuito:";
             // 
             // lblMutacaoValor
             // 
@@ -134,24 +152,6 @@
             this.lblGeracao.TabIndex = 0;
             this.lblGeracao.Text = "Geração:";
             // 
-            // lblTamanho
-            // 
-            this.lblTamanho.AutoSize = true;
-            this.lblTamanho.Location = new System.Drawing.Point(166, 57);
-            this.lblTamanho.Name = "lblTamanho";
-            this.lblTamanho.Size = new System.Drawing.Size(107, 13);
-            this.lblTamanho.TabIndex = 6;
-            this.lblTamanho.Text = "Tamanho do circuito:";
-            // 
-            // lblTamanhoValor
-            // 
-            this.lblTamanhoValor.AutoSize = true;
-            this.lblTamanhoValor.Location = new System.Drawing.Point(273, 57);
-            this.lblTamanhoValor.Name = "lblTamanhoValor";
-            this.lblTamanhoValor.Size = new System.Drawing.Size(43, 13);
-            this.lblTamanhoValor.TabIndex = 7;
-            this.lblTamanhoValor.Text = "VALOR";
-            // 
             // ResultadoFinal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,6 +160,7 @@
             this.Controls.Add(this.fieldsetInfo);
             this.Controls.Add(this.lblMenorCaminhoValor);
             this.Controls.Add(this.lblMenorCaminho);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
