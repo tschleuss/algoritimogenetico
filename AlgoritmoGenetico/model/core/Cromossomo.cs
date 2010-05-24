@@ -12,13 +12,13 @@ namespace AlgoritmoGenetico.model
     public class Cromossomo
     {
 
-        private int comprimentoCircuito;
-
-        public double AptidaoBruta {get;set;}
+        public int ComprimentoCircuito { get; set; }
+        public double AptidaoBruta { get; set; }
         public double ProbabSelecao { get; set; }
         public double IntervaloInicio { get; set; }
         public double IntervaloFim { get; set; }
         public int ID { get; set; }
+        public int GeracaoID { get; set; }
 
         private IList<int> circuito;
         public IList<int> Circuito
@@ -27,11 +27,6 @@ namespace AlgoritmoGenetico.model
             set { circuito = value; }
         }
 
-        public int Tamanho
-        {
-            get;
-            set;
-        }
 
         public String CircuitoString
         {
@@ -54,6 +49,38 @@ namespace AlgoritmoGenetico.model
             }
         }
 
+
+        //armazena a mutação do cromossomo
+        public int[] GenesMutados;
+        public void GerarMutacao(int indiceGene1, int indiceGene2)
+        {
+
+            this.GenesMutados = new int[2];
+
+            this.GenesMutados[0] = this.circuito[indiceGene1];
+            this.GenesMutados[1] = this.circuito[indiceGene2];
+
+            //troca os dois genes
+            this.circuito[indiceGene2] = this.GenesMutados[0];
+            this.circuito[indiceGene1] = this.GenesMutados[1];
+        }
+
+        public String GenesMutadosString
+        {
+            get
+            {
+                if (this.GenesMutados != null)
+                {
+                    return String.Format("Trocados: {0} e {1}", this.GenesMutados[0], this.GenesMutados[1]);
+                }
+                else
+                {
+                    return "-";
+                }
+            }
+        }
+
+
         public String IntervaloTotal
         {
             get
@@ -62,13 +89,19 @@ namespace AlgoritmoGenetico.model
             }
         }
 
+        public int Tamanho
+        {
+            get;
+            set;
+        }
+
         /// <param name="tamanho">Quantidade máxima de localidades</param>
         public Cromossomo(int tamanho, int id)
         {
             this.circuito = new List<int>();
             this.Tamanho = tamanho;
             this.ID = id;
-            this.comprimentoCircuito = 0;
+            this.ComprimentoCircuito = 0;
             this.AptidaoBruta = 0;
             this.ProbabSelecao = 0;
             this.IntervaloInicio = 0;
@@ -119,7 +152,7 @@ namespace AlgoritmoGenetico.model
         /// <returns>Comprimento total</returns>
         public int CalcularComprimentoCircuito(MatrizDistancias md)
         {
-            if(this.comprimentoCircuito == 0){
+            if(this.ComprimentoCircuito == 0){
 
                 int destino = 0;
                 int origem = 0;
@@ -131,7 +164,7 @@ namespace AlgoritmoGenetico.model
                     if (origem != 0)
                     {
                         destino = localidade;
-                        this.comprimentoCircuito += md.BuscarDistancia(origem, destino);
+                        this.ComprimentoCircuito += md.BuscarDistancia(origem, destino);
                     }
                     else
                     {
@@ -141,7 +174,7 @@ namespace AlgoritmoGenetico.model
                 }
             }
 
-            return this.comprimentoCircuito;
+            return this.ComprimentoCircuito;
         }
 
         /// <summary>

@@ -35,10 +35,11 @@ namespace AlgoritmoGenetico.view
             this.Grid = new System.Windows.Forms.DataGridView();
             this.colunaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaCircuito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colunaTamanho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colunaMutacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaAptidao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaProbab = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colunaIntervalo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colunaComprimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +49,7 @@ namespace AlgoritmoGenetico.view
             this.panelContainer.Controls.Add(this.Grid);
             //this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 0);
-            this.panelContainer.Size = new System.Drawing.Size(575, 463);
+            this.panelContainer.Size = new System.Drawing.Size(660, 463);
             this.panelContainer.TabIndex = 0;
             // 
             // grid
@@ -62,8 +63,9 @@ namespace AlgoritmoGenetico.view
             this.Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colunaID,
             this.colunaCircuito,
-            this.colunaTamanho,
+            this.colunaMutacao,
             this.colunaAptidao,
+            this.colunaComprimento,
             this.colunaProbab,
             this.colunaIntervalo});
             this.Grid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -95,15 +97,15 @@ namespace AlgoritmoGenetico.view
             this.colunaCircuito.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.colunaCircuito.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
-            // colunaTamanho
+            // colunaMutacao
             // 
-            this.colunaTamanho.DataPropertyName = "Tamanho";
-            this.colunaTamanho.HeaderText = "Tamanho";
-            this.colunaTamanho.Name = "colunaTamanho";
-            this.colunaTamanho.ReadOnly = true;
-            this.colunaTamanho.Width = 80;
-            this.colunaTamanho.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.colunaTamanho.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colunaMutacao.DataPropertyName = "GenesMutadosString";
+            this.colunaMutacao.HeaderText = "Mutação";
+            this.colunaMutacao.Name = "colunaMutacao";
+            this.colunaMutacao.ReadOnly = true;
+            this.colunaMutacao.Width = 100;
+            this.colunaMutacao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colunaMutacao.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
             // colunaAptidao
             // 
@@ -114,6 +116,14 @@ namespace AlgoritmoGenetico.view
             this.colunaAptidao.Width = 80;
             this.colunaAptidao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.colunaAptidao.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //colunaComprimento
+            this.colunaComprimento.DataPropertyName = "ComprimentoCircuito";
+            this.colunaComprimento.HeaderText = "Comprimento";
+            this.colunaComprimento.Name = "colunaComprimento";
+            this.colunaComprimento.ReadOnly = true;
+            this.colunaComprimento.Width = 80;
+            this.colunaComprimento.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.colunaComprimento.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
             // colunaProbab
             // 
@@ -121,7 +131,7 @@ namespace AlgoritmoGenetico.view
             this.colunaProbab.HeaderText = "Probab. de Seleção";
             this.colunaProbab.Name = "colunaProbab";
             this.colunaProbab.ReadOnly = true;
-            this.colunaProbab.Width = 150;
+            this.colunaProbab.Width = 140;
             this.colunaProbab.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.colunaProbab.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
@@ -174,10 +184,11 @@ namespace AlgoritmoGenetico.view
         private Panel panelContainer;
         private DataGridViewTextBoxColumn colunaID;
         private DataGridViewTextBoxColumn colunaCircuito;
-        private DataGridViewTextBoxColumn colunaTamanho;
+        private DataGridViewTextBoxColumn colunaMutacao;
         private DataGridViewTextBoxColumn colunaAptidao;
         private DataGridViewTextBoxColumn colunaProbab;
         private DataGridViewTextBoxColumn colunaIntervalo;
+        private DataGridViewTextBoxColumn colunaComprimento;
         private Label lblAptidaoPopulacional;
         public DataGridView Grid;
         public Label LblAptidaoPopulacionalValor;

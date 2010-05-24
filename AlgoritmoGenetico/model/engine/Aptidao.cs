@@ -12,8 +12,6 @@ namespace AlgoritmoGenetico.model.engine
     public class Aptidao
     {
 
-        private Cromossomo maiorCircuito;
-
         private MatrizDistancias md;
 
         public Aptidao(MatrizDistancias md)
@@ -21,22 +19,30 @@ namespace AlgoritmoGenetico.model.engine
             this.md = md;
         }
 
+        /// <summary>
+        /// Calcula a aptidão bruta de cada circuito da geração
+        /// </summary>
+        /// <param name="populacaoAtual">Lista de circuitos</param>
         public void CalcularAptidaoBruta(IList<Cromossomo> populacaoAtual)
         {
-            this.ProcurarMaiorCircuito(populacaoAtual);
+            Cromossomo maiorCircuito = this.ProcurarMaiorCircuito(populacaoAtual);
 
-            Console.WriteLine("\nAptidão bruta:");
+           //Console.WriteLine("\nAptidão bruta:");
 
             int i = 1;
             foreach (Cromossomo c in populacaoAtual)
             {
-                c.AptidaoBruta = this.maiorCircuito.CalcularComprimentoCircuito(md) - c.CalcularComprimentoCircuito(md);
+                c.AptidaoBruta = maiorCircuito.ComprimentoCircuito - c.CalcularComprimentoCircuito(md);
 
-                Console.WriteLine(String.Format("{0} - {1}", i, c.AptidaoBruta));
+                //Console.WriteLine(String.Format("{0} - {1}", i, c.AptidaoBruta));
                 i++;
             }
         }
 
+        /// <summary>
+        /// Com base na população da geração atual, calcula a aptidão populacional
+        /// </summary>
+        /// <param name="g">Geração atual</param>
         public void CalcularAptidaoPopulacional(Geracao g)
         {
             foreach (Cromossomo c in g.Populacao)
@@ -44,19 +50,21 @@ namespace AlgoritmoGenetico.model.engine
                 g.AptidaoPopulacional += c.AptidaoBruta;
             }
 
-            Console.WriteLine(String.Format("\nAptidão populacional: {0}", g.AptidaoPopulacional));
+           //Console.WriteLine(String.Format("\nAptidão populacional: {0}", g.AptidaoPopulacional));
         }
 
         /// <summary>
         /// Descobre qual dos circuitos tem o maior comprimento
         /// </summary>
         /// <param name="populacaoAtual">Lista de circuitos da geração atual</param>
-        private void ProcurarMaiorCircuito(IList<Cromossomo> populacaoAtual)
+        private Cromossomo ProcurarMaiorCircuito(IList<Cromossomo> populacaoAtual)
         {
             int maiorComprimento = 0;
             int comprimentoAtual = 0;
 
-            Console.WriteLine("\nTamanho dos percursos:");
+            //Console.WriteLine("\nTamanho dos percursos:");
+
+            Cromossomo maiorCircuito = null;
 
             int i = 1;
             foreach (Cromossomo c in populacaoAtual)
@@ -67,12 +75,14 @@ namespace AlgoritmoGenetico.model.engine
                 if (comprimentoAtual > maiorComprimento)
                 {
                     maiorComprimento = comprimentoAtual;
-                    this.maiorCircuito = c;
+                    maiorCircuito = c;
                 }
 
-                Console.WriteLine(String.Format("{0} - {1}", i, c.CalcularComprimentoCircuito(md)));
+                //Console.WriteLine(String.Format("{0} - {1}", i, c.CalcularComprimentoCircuito(md)));
                 i++;
             }
+
+            return maiorCircuito;
         }
 
     }

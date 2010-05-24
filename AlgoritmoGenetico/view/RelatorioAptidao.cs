@@ -18,6 +18,10 @@ namespace AlgoritmoGenetico.view
             this.PopularRelatorio(listaAptidao);
         }
 
+        /// <summary>
+        /// Gera um gráfico com a evolução da aptidão através das gerações
+        /// </summary>
+        /// <param name="listaAptidao">Lista de aptidões de cada geração</param>
         public void PopularRelatorio(IList<double> listaAptidao)
         {
             double maiorAptidao = 0;
@@ -46,8 +50,6 @@ namespace AlgoritmoGenetico.view
 
                 indiceGeracao++;
             }
-
-            
 
             this.graficoAptidao.Series.Values.AddRange(listaValores.ToArray<ChartSeriesValue>());
 
