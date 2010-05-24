@@ -136,4 +136,10 @@
   <data name="mutacoes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\mutacoes.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="reiniciar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\reiniciar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="resultado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\resultado.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

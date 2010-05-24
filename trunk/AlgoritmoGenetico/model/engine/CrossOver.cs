@@ -14,11 +14,9 @@ namespace AlgoritmoGenetico.model.engine
         private IList<Cromossomo[]> listaPais;
         private Populacao populacao;
         private Geracao geracao;
-        private Random rnd;
 
         public CrossOver(Populacao populacao, Geracao geracao, IList<Cromossomo[]> listaPais)
         {
-            this.rnd = new Random();
             this.populacao = populacao;
             this.geracao = geracao;
             this.listaPais = listaPais;
@@ -35,7 +33,7 @@ namespace AlgoritmoGenetico.model.engine
 
             foreach(Cromossomo[] pais in this.listaPais)
             {
-                Console.WriteLine("Pais: " + pais[0].ID + "/" + pais[1].ID );
+                //Console.WriteLine("Pais: " + pais[0].ID + "/" + pais[1].ID );
 
                 //gera 2 descendentes
                 for (int i = 0; i < pais.Length; i++)
@@ -46,11 +44,12 @@ namespace AlgoritmoGenetico.model.engine
                     {
                         descendente = GerarCromossomo(pais[0], pais[1], pais[i]);
 
-                        if (!this.populacao.CromossomoDuplicado(descendente))
-                        {
+                        //TODO Verificar se é necessário garantir que os filhos não sejam duplicados
+                        //if (!this.populacao.CromossomoDuplicado(descendente))
+                        //{
                             this.geracao.AdicionarIndividuo(descendente);
                             gerouDuplicado = false;
-                        }
+                        //}
                     }
                     
                 }
@@ -83,8 +82,8 @@ namespace AlgoritmoGenetico.model.engine
             #region Gera pontos de cross-over
 
             //Sorteia dois pontos de crossover, assim serão formados três segmentos no novo cromossomo
-            int pontoCrossOver1 = this.GerarPontoCrossOver(1, pai1.Tamanho-2);
-            int pontoCrossOver2 = this.GerarPontoCrossOver(pontoCrossOver1, pai1.Tamanho-1);
+            int pontoCrossOver1 = Util.InteiroAleatorio(1, pai1.Tamanho-2);
+            int pontoCrossOver2 = Util.InteiroAleatorio(pontoCrossOver1, pai1.Tamanho - 1);
 
             #endregion
 
@@ -147,17 +146,6 @@ namespace AlgoritmoGenetico.model.engine
                     break;
                 }
             }
-        }
-
-        /// <summary>
-        /// Gera um ponto de cross-over aleatório
-        /// </summary>
-        /// <param name="inicio">Mínimo que o número gerado poderá assumir</param>
-        /// <param name="maximo">Máximo que o número gerado poderá assumir</param>
-        /// <returns>Ponto de cross-over</returns>
-        private int GerarPontoCrossOver(int inicio, int maximo)
-        {
-            return this.rnd.Next(inicio, maximo);
         }
 
     }

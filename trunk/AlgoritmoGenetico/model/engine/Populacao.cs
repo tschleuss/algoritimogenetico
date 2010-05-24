@@ -12,10 +12,9 @@ namespace AlgoritmoGenetico.model.engine
         //define o tamanho da população
         private int numeroCircuitos = 20;
 
-        private Random rnd;
-
-        public IList<Geracao> ListaGeracoes;
+        public IList<Geracao> ListaGeracoes { get; set; }
         public Geracao GeracaoAtual { get; set; }
+        public Cromossomo MenorCircuito { get; set; }
 
         private int qtdLocalidades;
         private int primeiraLocalidade;
@@ -24,13 +23,14 @@ namespace AlgoritmoGenetico.model.engine
         public Populacao(MatrizDistancias md)
         {
             this.ListaGeracoes = new List<Geracao>();
-            this.rnd = new Random();
 
-            this.qtdLocalidades = md.QuantidadeLocalidades();
-            this.primeiraLocalidade = md.PrimeiraLocalidade();
+            this.qtdLocalidades = md.QuantidadeLocalidades;
+            this.primeiraLocalidade = md.PrimeiraLocalidade;
 
             //deve incluir a ultima localidade no circuito
-            this.ultimaLocalidade = md.UltimaLocalidade()+1;
+            this.ultimaLocalidade = md.UltimaLocalidade+1;
+
+            this.MenorCircuito = null;
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace AlgoritmoGenetico.model.engine
                    }
                 }
 
-               //Console.WriteLine("ITEM {0} - Tentativas para gerar {1}", this.circuitos.Count + 1, tentativas);
+               //Console.WriteLine("ITEM {0} - Tentativas para gerar {1}", this.GeracaoAtual.Populacao.Count + 1, tentativas);
                g.AdicionarIndividuo(novoCromossomo);
             }
 
@@ -81,12 +81,12 @@ namespace AlgoritmoGenetico.model.engine
             for (int i = 0; i < this.qtdLocalidades; i++)
             {
                 //sorteia uma localidade que esteja entre a primeira e a última definidas na matriz de distancias
-                localidadeSorteada = this.rnd.Next(this.primeiraLocalidade, this.ultimaLocalidade);
+                localidadeSorteada = Util.InteiroAleatorio(this.primeiraLocalidade, this.ultimaLocalidade);
 
                 //não pode repitir localidade no percurso
                 while(c.ExisteLocalidade(localidadeSorteada))
                 {
-                    localidadeSorteada = rnd.Next(this.primeiraLocalidade, this.ultimaLocalidade);
+                    localidadeSorteada = Util.InteiroAleatorio(this.primeiraLocalidade, this.ultimaLocalidade);
                 }
 
                c.AdicionarNodo(localidadeSorteada);
@@ -121,11 +121,19 @@ namespace AlgoritmoGenetico.model.engine
         /// <summary>
         /// Ordena a lista de circuitos de acordo com a apitdao bruta
         /// </summary>
-        public void AtualizarPopulacaoGeracaoAtual()
+        public void OrdenarCircuitosGeracaoAtual()
         {
             this.GeracaoAtual.Populacao = (from c in this.GeracaoAtual.Populacao
                                                  orderby c.AptidaoBruta descending
                                                  select c).ToList();
+
+            Cromossomo menorCircuitoGeracaoAtual = this.GeracaoAtual.Populacao[0];
+
+            if (this.MenorCircuito == null || menorCircuitoGeracaoAtual.ComprimentoCircuito < this.MenorCircuito.ComprimentoCircuito)
+            {
+                this.MenorCircuito = menorCircuitoGeracaoAtual;
+            }
+
         }
 
         public void AdicionarGeracao(Geracao g)

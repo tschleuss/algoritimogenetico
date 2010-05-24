@@ -201,5 +201,19 @@ namespace AlgoritmoGenetico.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap reiniciar {
+            get {
+                object obj = ResourceManager.GetObject("reiniciar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap resultado {
+            get {
+                object obj = ResourceManager.GetObject("resultado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

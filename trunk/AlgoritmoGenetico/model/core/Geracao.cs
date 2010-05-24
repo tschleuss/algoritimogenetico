@@ -17,8 +17,13 @@ namespace AlgoritmoGenetico.model.core
             this.AptidaoPopulacional = 0;
         }
 
-        public void AdicionarIndividuo(Cromossomo c){
-            this.Populacao.Add(c);
+        /// <summary>
+        /// Adiciona um circuito à geração
+        /// </summary>
+        /// <param name="novoCromossomo">Novo circuito</param>
+        public void AdicionarIndividuo(Cromossomo novoCromossomo){
+            this.Populacao.Add(novoCromossomo);
+            novoCromossomo.GeracaoID = this.ID;
         }
 
     }

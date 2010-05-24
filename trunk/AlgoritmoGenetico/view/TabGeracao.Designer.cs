@@ -29,11 +29,13 @@ namespace AlgoritmoGenetico.view
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TabGeracao));
             this.toolbarGeracao = new System.Windows.Forms.ToolStrip();
             this.btAvancar = new System.Windows.Forms.ToolStripButton();
             this.separador1 = new System.Windows.Forms.ToolStripSeparator();
             this.btMutacoes = new System.Windows.Forms.ToolStripButton();
+            this.separador2 = new System.Windows.Forms.ToolStripSeparator();
+            this.lblDifRelativa = new System.Windows.Forms.ToolStripLabel();
+            this.lblDifRelativaValor = new System.Windows.Forms.ToolStripLabel();
             this.panelTab = new System.Windows.Forms.Panel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.toolbarGeracao.SuspendLayout();
@@ -45,7 +47,10 @@ namespace AlgoritmoGenetico.view
             this.toolbarGeracao.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btAvancar,
             this.separador1,
-            this.btMutacoes});
+            this.btMutacoes,
+            this.separador2,
+            this.lblDifRelativa,
+            this.lblDifRelativaValor});
             this.toolbarGeracao.Location = new System.Drawing.Point(0, 0);
             this.toolbarGeracao.Name = "toolbarGeracao";
             this.toolbarGeracao.Size = new System.Drawing.Size(583, 25);
@@ -75,6 +80,24 @@ namespace AlgoritmoGenetico.view
             this.btMutacoes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btMutacoes.Name = "btMutacoes";
             this.btMutacoes.Size = new System.Drawing.Size(139, 22);
+            this.btMutacoes.Click += new System.EventHandler(this.btMutacoes_Click);
+            // 
+            // separador2
+            // 
+            this.separador2.Name = "separador2";
+            this.separador2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // lblDifRelativa
+            // 
+            this.lblDifRelativa.Name = "lblDifRelativa";
+            this.lblDifRelativa.Size = new System.Drawing.Size(191, 22);
+            this.lblDifRelativa.Text = "Variação relativa (5 gerações atrás):";
+            // 
+            // lblDifRelativaValor
+            // 
+            this.lblDifRelativaValor.Name = "lblDifRelativaValor";
+            this.lblDifRelativaValor.Size = new System.Drawing.Size(44, 22);
+            this.lblDifRelativaValor.Text = "VALOR";
             // 
             // panelTab
             // 
@@ -94,7 +117,7 @@ namespace AlgoritmoGenetico.view
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(583, 374);
             this.tabControl.TabIndex = 0;
-            this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.OnDrawItem);
+            this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.RenderizarTab);
             // 
             // TabGeracao
             // 
@@ -121,6 +144,9 @@ namespace AlgoritmoGenetico.view
         private System.Windows.Forms.ToolStripButton btAvancar;
         private System.Windows.Forms.ToolStripSeparator separador1;
         private System.Windows.Forms.ToolStripButton btMutacoes;
+        private ToolStripSeparator separador2;
+        private ToolStripLabel lblDifRelativa;
+        private ToolStripLabel lblDifRelativaValor;
 
     }
 }

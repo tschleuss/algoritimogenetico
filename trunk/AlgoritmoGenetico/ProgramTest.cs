@@ -30,7 +30,7 @@ namespace AlgoritmoGenetico
             ap.CalcularAptidaoPopulacional(p.GeracaoAtual);
 
             //após calcular a aptidaão bruta, atualiza a lista atual, ordenando pela aptidão bruta calculada
-            p.AtualizarPopulacaoGeracaoAtual();
+            p.OrdenarCircuitosGeracaoAtual();
 
             Console.WriteLine("Circuitos ordenados por aptidao:");
             Console.WriteLine(p.ToString());

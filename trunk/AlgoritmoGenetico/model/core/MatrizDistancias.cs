@@ -108,26 +108,35 @@ namespace AlgoritmoGenetico.model.core
         /// <summary>
         /// Busca a primeira localidade definida na matriz de distancias
         /// </summary>
-        public int PrimeiraLocalidade()
+        public int PrimeiraLocalidade
         {
-            return this.primeiraLocalidade;
+            get
+            {
+                return this.primeiraLocalidade;
+            }
         }
 
         /// <summary>
         /// Busca a última localidade definida na matriz de distancias
         /// </summary>
-        public int UltimaLocalidade()
+        public int UltimaLocalidade
         {
-            return this.ultimaLocalidade;
+            get
+            {
+                return this.ultimaLocalidade;
+            }
         }
 
         /// <summary>
         /// Busca quantidade de localidades configurada na matriz de distancias
         /// </summary>
         /// <returns>Quantidade de localidades</returns>
-        public int QuantidadeLocalidades()
+        public int QuantidadeLocalidades
         {
-            return this.dicValores.Count;
+            get
+            {
+                return this.dicValores.Count;
+            }
         }
 
         /// <summary>
@@ -146,6 +155,16 @@ namespace AlgoritmoGenetico.model.core
 
             return this.dicValores[origem][destino-1];
 
+        }
+
+        /// <summary>
+        /// Busca a distância entre a localidade de origem e todos os destinos
+        /// </summary>
+        /// <param name="origem">Localidade de origem</param>
+        /// <returns>Distâncias entre os pontos</returns>
+        public int[] BuscarArrayDistancias(int origem)
+        {
+            return this.dicValores[origem].ToArray();
         }
 
         /// <summary>

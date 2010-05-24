@@ -15,6 +15,7 @@ namespace AlgoritmoGenetico.view
     {
 
         public PanelGeracao panel;
+        public Geracao Geracao;
 
         public SubTabGeracao()
         {
@@ -26,6 +27,7 @@ namespace AlgoritmoGenetico.view
 
         public void CarregarDados(Geracao g)
         {
+            this.Geracao = g;
             this.panel.Grid.DataSource = g.Populacao;
             this.panel.LblAptidaoPopulacionalValor.Text = g.AptidaoPopulacional.ToString();
         }
