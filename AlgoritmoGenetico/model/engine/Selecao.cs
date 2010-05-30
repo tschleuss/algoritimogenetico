@@ -10,14 +10,11 @@ namespace AlgoritmoGenetico.model.engine
     {
         public IList<Cromossomo[]> ListaPais { get; set; }
         private Geracao geracao;
-        private Dictionary<int, int> qtdSelecoesPais;
-        private int maximoVezesSorteado = 2;
 
         public Selecao(Geracao geracao)
         {
             this.geracao = geracao;
             this.ListaPais = new List<Cromossomo[]>();
-            this.qtdSelecoesPais = new Dictionary<int, int>();
         }
 
         /// <summary>
@@ -53,36 +50,9 @@ namespace AlgoritmoGenetico.model.engine
                     }
                 }
 
-                this.ContabilizarQtdParesPorPai(individuo1.ID, individuo2.ID);
                 this.ListaPais.Add(new Cromossomo[2] { individuo1, individuo2 });
             }
 
-        }
-
-        /// <summary>
-        /// Contabiliza a quantidade de vezes que um cromossomo aparece nos pares
-        /// </summary>
-        /// <param name="pai1">Primeiro pai do par</param>
-        /// <param name="pai2">Segundo pai do par</param>
-        private void ContabilizarQtdParesPorPai(int pai1, int pai2)
-        {
-            if (this.qtdSelecoesPais.ContainsKey(pai1))
-            {
-                this.qtdSelecoesPais[pai1]++;
-            }
-            else
-            {
-                this.qtdSelecoesPais.Add(pai1, 1);
-            }
-
-            if (this.qtdSelecoesPais.ContainsKey(pai2))
-            {
-                this.qtdSelecoesPais[pai2]++;
-            }
-            else
-            {
-                this.qtdSelecoesPais.Add(pai2, 1);
-            }
         }
 
         /// <summary>
@@ -92,35 +62,11 @@ namespace AlgoritmoGenetico.model.engine
         /// <returns>Cromossomo sorteado</returns>
         private Cromossomo SortearCromossomo()
         {
-            double intervaloSorteado;
+            double intervaloSorteado = Util.DecimalAleatorio();
 
-            bool excedeuMaximoVezes = true;
-            Cromossomo sorteado = null;
-
-            while (excedeuMaximoVezes)
-            {
-
-                intervaloSorteado = Util.DecimalAleatorio();
-
-                sorteado = (from c in this.geracao.Populacao
+            Cromossomo sorteado = (from c in this.geracao.Populacao
                             where intervaloSorteado >= c.IntervaloInicio && intervaloSorteado <= c.IntervaloFim
                             select c).First();
-
-                /*
-                //TODO Se for necessário evitar duplicações, usar  o código abaixo
-                if (this.qtdSelecoesPais.ContainsKey(sorteado.ID))
-                {
-                    //não permite que o mesmo circuito seja o pai de muitos descendentes
-                    if (this.qtdSelecoesPais[sorteado.ID] < this.maximoVezesSorteado)
-                    {
-                        excedeuMaximoVezes = false;
-                    }
-                }
-                else
-                {*/
-                    excedeuMaximoVezes = false;
-                //}
-            }
 
             return sorteado;
         }
