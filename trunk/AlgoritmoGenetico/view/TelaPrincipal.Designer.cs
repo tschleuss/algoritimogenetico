@@ -75,7 +75,6 @@ namespace AlgoritmoGenetico
             this.btReiniciar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btReiniciar.Name = "btReiniciar";
             this.btReiniciar.Size = new System.Drawing.Size(71, 22);
-            this.btReiniciar.Text = "toolStripButton2";
             this.btReiniciar.Click += new System.EventHandler(this.btReiniciar_Click);
             // 
             // separador1
@@ -138,7 +137,6 @@ namespace AlgoritmoGenetico
             this.btExibirResultado.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btExibirResultado.Name = "btExibirResultado";
             this.btExibirResultado.Size = new System.Drawing.Size(115, 22);
-            this.btExibirResultado.Text = "toolStripButton2";
             this.btExibirResultado.Visible = false;
             this.btExibirResultado.Click += new System.EventHandler(this.btExibirResultado_Click);
             // 
