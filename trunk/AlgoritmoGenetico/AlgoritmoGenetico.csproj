@@ -61,7 +61,6 @@
     <Compile Include="model\engine\Selecao.cs" />
     <Compile Include="model\engine\Util.cs" />
     <Compile Include="model\engine\VariacaoRelativa.cs" />
-    <Compile Include="ProgramTest.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -29,8 +29,6 @@ namespace AlgoritmoGenetico.model.engine
         {
             Cromossomo descendente = null;
 
-            bool gerouDuplicado = true;
-
             foreach(Cromossomo[] pais in this.listaPais)
             {
                 //Console.WriteLine("Pais: " + pais[0].ID + "/" + pais[1].ID );
@@ -38,19 +36,9 @@ namespace AlgoritmoGenetico.model.engine
                 //gera 2 descendentes
                 for (int i = 0; i < pais.Length; i++)
                 {
-                    gerouDuplicado = true;
+                    descendente = GerarCromossomo(pais[0], pais[1], pais[i]);
 
-                    while (gerouDuplicado)
-                    {
-                        descendente = GerarCromossomo(pais[0], pais[1], pais[i]);
-
-                        //TODO Verificar se é necessário garantir que os filhos não sejam duplicados
-                        //if (!this.populacao.CromossomoDuplicado(descendente))
-                        //{
-                            this.geracao.AdicionarIndividuo(descendente);
-                            gerouDuplicado = false;
-                        //}
-                    }
+                    this.geracao.AdicionarIndividuo(descendente);
                     
                 }
             }
