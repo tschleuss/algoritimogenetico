@@ -166,13 +166,6 @@ namespace AlgoritmoGenetico
             for (int i = 1; i <= qtdGeracoes; i++)
             {
 
-                //verifica se ainda está evoluindo
-                if (this.populacao.GeracaoAtual.AptidaoPopulacional == 0)
-                {
-                    this.CalcularVariacaoRelativaGeracaoAtual();
-                    break;
-                }
-
                 Selecao selecao = new Selecao(this.populacao.GeracaoAtual);
                 selecao.SelecionarPais();
 
@@ -198,12 +191,7 @@ namespace AlgoritmoGenetico
 
             lblRodape.Text = String.Format("Evolução concluída. Geração atual: {0}", this.populacao.GeracaoAtual.ID);
 
-            //verifica se ainda está evoluindo
-            if (this.populacao.GeracaoAtual.AptidaoPopulacional == 0)
-            {
-                this.CalcularVariacaoRelativaGeracaoAtual();
-            }
-            else if (qtdGeracoes > 1)
+            if (qtdGeracoes > 1)
             {
                 this.tabGeracaoAtual.DesabilitarBotaoAvancar();
                 this.btAvancarGeracoes.Enabled = true;
