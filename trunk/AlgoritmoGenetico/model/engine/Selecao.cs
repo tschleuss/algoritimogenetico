@@ -37,16 +37,31 @@ namespace AlgoritmoGenetico.model.engine
 
                 individuo1 = this.SortearCromossomo();
 
-                //O mesmo indivíduo pode ser novamente sorteado em outro par
-                //Apenas evita-se a duplicação do indivíduo no mesmo par
-                while(paisIguais)
+                //Se não encontrou um individuo, permite duplicação
+                if (individuo1 == null)
                 {
-                    individuo2 = this.SortearCromossomo();
-
-                    //Se ocorrer duplicação, deve-se efetuar novo sorteio
-                    if (individuo1.ID != individuo2.ID)
+                    individuo1 = this.geracao.Populacao.First();
+                    individuo2 = individuo1;
+                }
+                else
+                {
+                    //O mesmo indivíduo pode ser novamente sorteado em outro par
+                    //Apenas evita-se a duplicação do indivíduo no mesmo par
+                    while (paisIguais)
                     {
-                        paisIguais = false;
+                        individuo2 = this.SortearCromossomo();
+
+                        //Se não encontrou um individuo, permite duplicação
+                        if (individuo2 == null)
+                        {
+                            individuo2 = individuo1;
+                            paisIguais = false;
+                        }
+                        //Se ocorrer duplicação, deve-se efetuar novo sorteio
+                        else if (individuo1.ID != individuo2.ID)
+                        {
+                            paisIguais = false;
+                        }
                     }
                 }
 
@@ -64,11 +79,19 @@ namespace AlgoritmoGenetico.model.engine
         {
             double intervaloSorteado = Util.DecimalAleatorio();
 
-            Cromossomo sorteado = (from c in this.geracao.Populacao
-                            where intervaloSorteado >= c.IntervaloInicio && intervaloSorteado <= c.IntervaloFim
-                            select c).First();
+            IList<Cromossomo> lista = (from c in this.geracao.Populacao
+                                   where intervaloSorteado >= c.IntervaloInicio && intervaloSorteado <= c.IntervaloFim
+                                   select c).ToList();
 
-            return sorteado;
+            if (lista.Count > 1)
+            {
+                return null;
+            }
+            else
+            {
+                return lista.FirstOrDefault();
+            }
+
         }
 
 
