@@ -33,7 +33,7 @@ namespace AlgoritmoGenetico.view
 
             DataGridViewTextBoxColumn coluna = null;
 
-            for(int i= 1; i <= md.QuantidadeLocalidades; i++)
+            for(int i= 0; i < md.QuantidadeLocalidades(true); i++)
             {
                 coluna = new DataGridViewTextBoxColumn();
                 coluna.ReadOnly = true;
@@ -47,7 +47,7 @@ namespace AlgoritmoGenetico.view
 
             this.grid.Columns.AddRange(listaColunas.ToArray());
 
-            for (int i = 1; i <= this.md.QuantidadeLocalidades; i++)
+            for (int i = 0; i < this.md.QuantidadeLocalidades(true); i++)
             {
                 this.AdicionarLinha(i);
             }

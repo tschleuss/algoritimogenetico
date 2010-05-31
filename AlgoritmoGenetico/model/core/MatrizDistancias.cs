@@ -28,9 +28,10 @@ namespace AlgoritmoGenetico.model.core
 
             IList<string> valorLinha = null;
 
-            int localidadeAtual = 0;
-            int distanciaAtual = 0;
-            int tokenDistancia = 0;
+            int localidadeAtual = -1;
+            int distanciaAtual = -1;
+            int tokenDistancia = -1;
+            primeiraLocalidade = -1;
             IList<int> distancias = null;
 
             foreach(String valor in valoresTXT)
@@ -41,14 +42,15 @@ namespace AlgoritmoGenetico.model.core
 
                 if (valorLinha.Count > 1)
                 {
-                    if (localidadeAtual != 0)
+                    if (localidadeAtual > -1)
                     {
                         dicValores.Add(localidadeAtual, distancias);
                         distancias = null;
                     }
-                    else
+
+                    if (localidadeAtual > 0 && primeiraLocalidade == -1)
                     {
-                        primeiraLocalidade = int.Parse(valorLinha[0]);
+                        primeiraLocalidade = localidadeAtual;
                     }
 
                     localidadeAtual = int.Parse(valorLinha[0]);
@@ -88,7 +90,7 @@ namespace AlgoritmoGenetico.model.core
                         #region Distancia equivalente a de outro valor já existente no dicionário
                         else
                         {
-                            distanciaAtual = dicValores[tokenDistancia][localidadeAtual - 1];
+                            distanciaAtual = dicValores[tokenDistancia][localidadeAtual];
                         }
                         #endregion
 
@@ -131,9 +133,13 @@ namespace AlgoritmoGenetico.model.core
         /// Busca quantidade de localidades configurada na matriz de distancias
         /// </summary>
         /// <returns>Quantidade de localidades</returns>
-        public int QuantidadeLocalidades
+        public int QuantidadeLocalidades(bool considerarInicio)
         {
-            get
+            if (this.dicValores.ContainsKey(0) && !considerarInicio)
+            {
+                return this.dicValores.Count - 1;
+            }
+            else
             {
                 return this.dicValores.Count;
             }
@@ -153,7 +159,7 @@ namespace AlgoritmoGenetico.model.core
                 return 0;
             }
 
-            return this.dicValores[origem][destino-1];
+            return this.dicValores[origem][destino];
 
         }
 

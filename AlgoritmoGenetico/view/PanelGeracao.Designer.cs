@@ -94,6 +94,7 @@ namespace AlgoritmoGenetico.view
             this.colunaCircuito.HeaderText = "Circuito";
             this.colunaCircuito.Name = "colunaCircuito";
             this.colunaCircuito.ReadOnly = true;
+            this.colunaCircuito.Width = 105;
             this.colunaCircuito.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.colunaCircuito.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
@@ -103,7 +104,7 @@ namespace AlgoritmoGenetico.view
             this.colunaMutacao.HeaderText = "Mutação";
             this.colunaMutacao.Name = "colunaMutacao";
             this.colunaMutacao.ReadOnly = true;
-            this.colunaMutacao.Width = 100;
+            this.colunaMutacao.Width = 90;
             this.colunaMutacao.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.colunaMutacao.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             // 
