@@ -92,21 +92,21 @@ namespace AlgoritmoGenetico
             VariacaoRelativa variacao = new VariacaoRelativa(this);
             
             int indiceGeracaoAtual = this.populacao.GeracaoAtual.ID -1;
-            double aptidaoPassada;
-            double aptidaoAtual = this.populacao.GeracaoAtual.AptidaoPopulacional;
+            double aptidaoMediaPassada;
+            double aptidaoMediaAtual = this.populacao.GeracaoAtual.AptidaoPopMedia;
 
             if (indiceGeracaoAtual != 0)
             {
                 Geracao geracaoComparacao = this.populacao.ListaGeracoes[indiceGeracaoAtual - 5];
-                aptidaoPassada = geracaoComparacao.AptidaoPopulacional;
+                aptidaoMediaPassada = geracaoComparacao.AptidaoPopMedia;
             }
             else
             {
-                aptidaoPassada = 0;
+                aptidaoMediaPassada = 0;
             }
 
             //calcula a variação
-            double variacaoRelativa = variacao.CalcularDiferencaRelativa(aptidaoAtual, aptidaoPassada);
+            double variacaoRelativa = variacao.CalcularDiferencaRelativa(aptidaoMediaAtual, aptidaoMediaPassada);
 
             //escreve no label
             this.tabGeracaoAtual.PopularVariacaoRelativa(variacaoRelativa);
@@ -223,7 +223,7 @@ namespace AlgoritmoGenetico
             IList<double> listaAptidao = new List<double>();
 
             foreach(Geracao g in this.populacao.ListaGeracoes){
-                listaAptidao.Add(g.AptidaoPopulacional);
+                listaAptidao.Add(g.AptidaoPopMedia);
             }
 
             RelatorioAptidao relatorioAptidao = new RelatorioAptidao(listaAptidao);

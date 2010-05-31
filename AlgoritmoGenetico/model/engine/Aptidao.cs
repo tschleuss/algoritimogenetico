@@ -50,6 +50,8 @@ namespace AlgoritmoGenetico.model.engine
                 g.AptidaoPopulacional += c.AptidaoBruta;
             }
 
+            g.AptidaoPopMedia = Util.ParseFormat(g.AptidaoPopulacional / g.Populacao.Count, 0);
+
            //Console.WriteLine(String.Format("\nAptidão populacional: {0}", g.AptidaoPopulacional));
         }
 

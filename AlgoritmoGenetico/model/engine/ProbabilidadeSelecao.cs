@@ -32,10 +32,10 @@ namespace AlgoritmoGenetico.model.engine
             {
                 if (c.AptidaoBruta != 0)
                 {
-                    c.ProbabSelecao = Util.ParseFormat(c.AptidaoBruta / aptidaoPopulacional);
+                    c.ProbabSelecao = Util.ParseFormat(c.AptidaoBruta / aptidaoPopulacional, 4);
 
-                    c.IntervaloInicio = Util.ParseFormat(this.intervaloAtual);
-                    c.IntervaloFim = Util.ParseFormat(c.IntervaloInicio + c.ProbabSelecao);
+                    c.IntervaloInicio = Util.ParseFormat(this.intervaloAtual, 4);
+                    c.IntervaloFim = Util.ParseFormat(c.IntervaloInicio + c.ProbabSelecao, 4);
 
                     this.intervaloAtual = c.IntervaloFim;
                     penultimo = c;
