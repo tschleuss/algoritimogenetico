@@ -24,20 +24,20 @@ namespace AlgoritmoGenetico.model.engine
         /// <summary>
         /// Calcula a variação relativa da aptidão atual e da aptidão de 5 gerações passsadas
         /// </summary>
-        /// <param name="aptidaoPopulacionalAtual">Apitdão da geração atual</param>
-        /// <param name="aptidaoPopulacionalAnterior">Apitdão de 5 gerações passadas</param>
+        /// <param name="aptidaoPopulacionalAtual">Apitdão média da geração atual</param>
+        /// <param name="aptidaoPopulacionalAnterior">Apitdão média de 5 gerações passadas</param>
         /// <returns></returns>
-        public double CalcularDiferencaRelativa(double aptidaoPopulacionalAtual, double aptidaoPopulacionalAnterior)
+        public double CalcularDiferencaRelativa(double aptidaoMediaAtual, double aptidaoMediaAnterior)
         {
             double variacao;
-            if (aptidaoPopulacionalAtual == 0)
+            if (aptidaoMediaAtual == 0)
             {
                 variacao = 0;
             }
             else
             {
-                variacao = Math.Abs(aptidaoPopulacionalAtual - aptidaoPopulacionalAnterior) / aptidaoPopulacionalAtual;
-                variacao = Util.ParseFormat(variacao);
+                variacao = Math.Abs(aptidaoMediaAtual - aptidaoMediaAnterior) / aptidaoMediaAtual;
+                variacao = Util.ParseFormat(variacao, 4);
             }
 
             if(variacao < this.variacaoMinima){

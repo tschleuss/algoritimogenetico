@@ -29,13 +29,27 @@ namespace AlgoritmoGenetico.model.engine
         }
 
         /// <summary>
-        /// Truna um número decimal para 4 casas após a vírgula
+        /// Trunca um número decimal para N casas após a vírgula
         /// </summary>
         /// <param name="valor">Número decimal</param>
-        /// <returns>Número decimal com 4 casas após a vírgula</returns>
-        public static double ParseFormat(double valor)
+        /// <param name="qtdCasasDecimais">Quantidade de casas decimais</param>
+        /// <returns>Número decimal com N casas após a vírgula</returns>
+        public static double ParseFormat(double valor, int qtdCasasDecimais)
         {
-            return double.Parse(valor.ToString("0.0000"));
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < qtdCasasDecimais; i++)
+            {
+                sb.Append("0");
+            }
+
+            if (qtdCasasDecimais > 0)
+            {
+                return double.Parse(valor.ToString(String.Format("0.{0}", sb.ToString())));
+            }
+            else
+            {
+                return double.Parse(valor.ToString("0"));
+            }
         }
 
     }

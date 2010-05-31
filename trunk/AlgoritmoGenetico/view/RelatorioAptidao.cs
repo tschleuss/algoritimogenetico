@@ -30,22 +30,22 @@ namespace AlgoritmoGenetico.view
             IList<ChartSeriesValue> listaValores = new List<ChartSeriesValue>();
             ChartSeriesValue chartSeries = null;
 
-            foreach (double aptidaoPopulacional in listaAptidao)
+            foreach (double aptidaoMedia in listaAptidao)
             {
                 chartSeries = new ChartSeriesValue();
                 chartSeries.Date = indiceGeracao;
-                chartSeries.Value = new decimal(new int[] { int.Parse(aptidaoPopulacional.ToString()), 0, 0, 0 });
+                chartSeries.Value = new decimal(new int[] { int.Parse(aptidaoMedia.ToString()), 0, 0, 0 });
 
                 listaValores.Add(chartSeries);
 
-                if (aptidaoPopulacional > maiorAptidao)
+                if (aptidaoMedia > maiorAptidao)
                 {
-                    maiorAptidao = aptidaoPopulacional;
+                    maiorAptidao = aptidaoMedia;
                 }
 
-                if (aptidaoPopulacional < menorAptidao)
+                if (aptidaoMedia < menorAptidao)
                 {
-                    menorAptidao = aptidaoPopulacional;
+                    menorAptidao = aptidaoMedia;
                 }
 
                 indiceGeracao++;

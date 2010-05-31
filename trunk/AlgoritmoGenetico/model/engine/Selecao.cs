@@ -58,7 +58,7 @@ namespace AlgoritmoGenetico.model.engine
                             paisIguais = false;
                         }
                         //Se ocorrer duplicação, deve-se efetuar novo sorteio
-                        else if (individuo1.ID != individuo2.ID)
+                        else if (individuo1.ID != individuo2.ID || (individuo2.IntervaloInicio == 0 && individuo2.IntervaloFim == 1))
                         {
                             paisIguais = false;
                         }
