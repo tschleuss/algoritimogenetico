@@ -24,7 +24,7 @@ namespace AlgoritmoGenetico.model.engine
         {
             this.ListaGeracoes = new List<Geracao>();
 
-            this.qtdLocalidades = md.QuantidadeLocalidades;
+            this.qtdLocalidades = md.QuantidadeLocalidades(false);
             this.primeiraLocalidade = md.PrimeiraLocalidade;
 
             //deve incluir a ultima localidade no circuito

@@ -44,17 +44,20 @@ namespace AlgoritmoGenetico.view
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 0);
+            this.grid.Name = "grid";
             this.grid.ReadOnly = true;
             this.grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.grid.Size = new System.Drawing.Size(744, 244);
             this.grid.TabIndex = 0;
             // 
             // TelaMatrizDistancias
             // 
-            this.ClientSize = new System.Drawing.Size(673, 222);
+            this.ClientSize = new System.Drawing.Size(744, 244);
             this.Controls.Add(this.grid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.Name = "TelaMatrizDistancias";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Matriz de distâncias do problema";
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();

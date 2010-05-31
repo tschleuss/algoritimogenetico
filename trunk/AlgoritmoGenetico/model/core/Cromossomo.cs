@@ -34,6 +34,8 @@ namespace AlgoritmoGenetico.model
             {
                 StringBuilder sb = new StringBuilder();
 
+                sb.Append("0-");
+
                 for (int i = 0; i < circuito.Count; i++)
                 {
                     sb.Append(circuito[i]);
@@ -44,6 +46,8 @@ namespace AlgoritmoGenetico.model
                         sb.Append("-");
                     }
                 }
+
+                sb.Append("-0");
 
                 return sb.ToString();
             }
@@ -170,8 +174,14 @@ namespace AlgoritmoGenetico.model
                     {
                         destino = localidade;
                     }
-
                 }
+
+                //de 0 até o primeira localidade
+                this.ComprimentoCircuito += md.BuscarDistancia(0, this.circuito.First());
+
+                //da última localidade até 0
+                this.ComprimentoCircuito += md.BuscarDistancia(this.circuito.Last(), 0);
+
             }
 
             return this.ComprimentoCircuito;

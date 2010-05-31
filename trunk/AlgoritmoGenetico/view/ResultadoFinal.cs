@@ -31,7 +31,7 @@ namespace AlgoritmoGenetico.view
         {
             this.lblGeracaoValor.Text = this.resultado.GeracaoID.ToString();
             this.lblIDValor.Text = this.resultado.ID.ToString(); ;
-            this.lblMenorCaminhoValor.Text = String.Format("0-{0}-0", this.resultado.CircuitoString);
+            this.lblMenorCaminhoValor.Text = this.resultado.CircuitoString;
             this.lblMutacaoValor.Text = (this.resultado.GenesMutados == null ? "Não" : "Sim");
             this.lblTamanhoValor.Text = this.resultado.ComprimentoCircuito.ToString();
         }
